@@ -180,7 +180,13 @@ python run_tests.py -b chrome -s 01_authentication
 - **Windows Test Runner**: Double-click or run `run_tests.bat`
 - **Linux / macOS Test Runner**: Run `./run_tests.sh`
 - **View Report (Windows)**: Double-click or run `view_report.bat` to launch `reports/report.html` in your browser
+```bash
+view_report.bat
+```  
 - **View Log (Windows)**: Double-click or run `view_log.bat` to launch `reports/log.html` in your browser
+```bash
+view_log.bat
+``` 
 
 ---
 
