@@ -1,0 +1,53 @@
+{
+  "valid_checkout": {
+    "first_name": "Jane",
+    "last_name": "Doe",
+    "postal_code": "94016"
+  },
+  "boundary_tests": [
+    {
+      "first_name": "",
+      "last_name": "Doe",
+      "postal_code": "94016",
+      "expected_error": "Error: First Name is required"
+    },
+    {
+      "first_name": "Jane",
+      "last_name": "",
+      "postal_code": "94016",
+      "expected_error": "Error: Last Name is required"
+    },
+    {
+      "first_name": "Jane",
+      "last_name": "Doe",
+      "postal_code": "",
+      "expected_error": "Error: Postal Code is required"
+    }
+  ],
+  "products": {
+    "backpack": {
+      "name": "Sauce Labs Backpack",
+      "price": 29.99
+    },
+    "bike_light": {
+      "name": "Sauce Labs Bike Light",
+      "price": 9.99
+    },
+    "bolt_tshirt": {
+      "name": "Sauce Labs Bolt T-Shirt",
+      "price": 15.99
+    },
+    "fleece_jacket": {
+      "name": "Sauce Labs Fleece Jacket",
+      "price": 49.99
+    },
+    "onesie": {
+      "name": "Sauce Labs Onesie",
+      "price": 7.99
+    },
+    "red_tshirt": {
+      "name": "Test.allTheThings() T-Shirt (Red)",
+      "price": 15.99
+    }
+  }
+}

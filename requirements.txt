@@ -1,0 +1,6 @@
+# SDET Technical Exercise Dependencies
+robotframework>=7.0.0
+robotframework-seleniumlibrary>=6.5.0
+selenium>=4.20.0
+pillow>=10.0.0
+requests>=2.31.0

@@ -1,0 +1,34 @@
+{
+  "users": {
+    "standard": {
+      "username": "standard_user",
+      "password": "secret_sauce",
+      "description": "Standard verified user with full permissions"
+    },
+    "locked_out": {
+      "username": "locked_out_user",
+      "password": "secret_sauce",
+      "expected_error": "Epic sadface: Sorry, this user has been locked out."
+    },
+    "problem": {
+      "username": "problem_user",
+      "password": "secret_sauce",
+      "description": "User persona that experiences broken images and UI glitches"
+    },
+    "performance_glitch": {
+      "username": "performance_glitch_user",
+      "password": "secret_sauce",
+      "description": "User persona that experiences artificial delays in page navigation"
+    },
+    "visual_glitch": {
+      "username": "visual_user",
+      "password": "secret_sauce",
+      "description": "User persona with subtle visual layout regressions"
+    },
+    "invalid": {
+      "username": "non_existent_user",
+      "password": "wrong_password",
+      "expected_error": "Epic sadface: Username and password do not match any user in this service"
+    }
+  }
+}

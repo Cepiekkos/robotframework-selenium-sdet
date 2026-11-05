@@ -1,0 +1,29 @@
+# Python & Testing artifacts
+__pycache__/
+*.py[cod]
+*$py.class
+*.log
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Robot Framework artifacts
+reports/*.html
+reports/*.xml
+reports/*.png
+reports/visual_diffs/*
+!reports/visual_diffs/.gitkeep
+
+# Environment & IDE
+.env
+.venv/
+venv/
+ENV/
+.idea/
+.vscode/
+*.swp
+
+# OS generated
+Thumbs.db
+Desktop.ini
+.DS_Store
