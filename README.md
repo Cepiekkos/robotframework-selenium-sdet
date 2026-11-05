@@ -1,6 +1,6 @@
 # Enterprise SDET Automation Framework (Robot Framework + Python + Selenium + AI)
 
-[![CI Automation Pipeline](https://github.com/example/robotframework-selenium-sdet/actions/workflows/ci.yml/badge.svg)](https://github.com/example/robotframework-selenium-sdet/actions)
+[![CI Automation Pipeline](https://github.com/Cepiekkos/robotframework-selenium-sdet/actions/workflows/ci.yml/badge.svg)](https://github.com/Cepiekkos/robotframework-selenium-sdet/actions)
 [![Robot Framework](https://img.shields.io/badge/Robot%20Framework-7.5.1-blue.svg)](https://robotframework.org/)
 [![Selenium](https://img.shields.io/badge/Selenium-4.52.0-green.svg)](https://www.selenium.dev/)
 [![Python](https://img.shields.io/badge/Python-3.12-yellow.svg)](https://www.python.org/)
@@ -120,7 +120,7 @@ robotframework-selenium-sdet/
 
 1. Clone repository:
    ```bash
-   git clone https://github.com/example/robotframework-selenium-sdet.git
+   git clone https://github.com/Cepiekkos/robotframework-selenium-sdet.git
    cd robotframework-selenium-sdet
    ```
 
