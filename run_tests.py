@@ -43,7 +43,8 @@ def main():
         "--outputdir", output_dir,
         "--variable", f"BROWSER:{args.browser}",
         "--loglevel", "INFO",
-        "--timestampoutputs"
+        "--timestampoutputs",
+        "--reportbackground", "white:white:white"
     ]
 
     for var in args.variable:
