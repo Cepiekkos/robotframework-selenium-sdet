@@ -10,7 +10,7 @@ An enterprise-grade, scalable test automation framework engineered for high reli
 
 ---
 
-## 🌟 Architecture & Highlights
+##  Architecture & Highlights
 
 ```mermaid
 graph TD
