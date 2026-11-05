@@ -177,8 +177,10 @@ python run_tests.py -b chrome -s 01_authentication
 ```
 
 #### 5. Windows / Linux Convenience Scripts
-- **Windows**: Double-click or run `run_tests.bat`
-- **Linux / macOS**: Run `./run_tests.sh`
+- **Windows Test Runner**: Double-click or run `run_tests.bat`
+- **Linux / macOS Test Runner**: Run `./run_tests.sh`
+- **View Report (Windows)**: Double-click or run `view_report.bat` to launch `reports/report.html` in your browser
+- **View Log (Windows)**: Double-click or run `view_log.bat` to launch `reports/log.html` in your browser
 
 ---
 
