@@ -42,7 +42,7 @@ graph TD
 
 ---
 
-## 🛠️ Custom Tools & Innovations Addressing Testing Gaps
+##  Custom Tools & Innovations Addressing Testing Gaps
 
 | Innovation | Tool / Library | Problem Addressed | SDET Technical Solution |
 | :--- | :--- | :--- | :--- |
@@ -53,7 +53,7 @@ graph TD
 
 ---
 
-## 📂 Project Structure
+##  Project Structure
 
 ```
 robotframework-selenium-sdet/
@@ -96,7 +96,7 @@ robotframework-selenium-sdet/
 
 ---
 
-## 🧪 Test Suites & Coverage Matrix
+##  Test Suites & Coverage Matrix
 
 | Suite | Focus Areas | Key Test Scenarios | Tags |
 | :--- | :--- | :--- | :--- |
@@ -109,7 +109,7 @@ robotframework-selenium-sdet/
 
 ---
 
-## 🚀 Setup & Execution Guide
+##  Setup & Execution Guide
 
 ### Prerequisites
 - **Python**: 3.10+ (Tested on Python 3.12)
@@ -182,7 +182,7 @@ python run_tests.py -b chrome -s 01_authentication
 
 ---
 
-## 📊 Rich Test Reports & AI Diagnostics
+##  Rich Test Reports & AI Diagnostics
 
 After execution, self-contained reports and interactive logs are generated in the `reports/` folder:
 - **`reports/report.html`**: Executive dashboard with pass/fail metrics, execution time breakdown, and tag statistics.
@@ -193,21 +193,4 @@ After execution, self-contained reports and interactive logs are generated in th
 
 ---
 
-## 🔄 CI/CD Pipeline (GitHub Actions)
 
-A fully automated CI/CD pipeline is configured in [`.github/workflows/ci.yml`](file:///c:/Users/acatt/Desktop/robotframework-selenium-sdet/.github/workflows/ci.yml).
-- Automatically triggers on every `push` and `pull_request` to `main` / `master`.
-- Sets up Python 3.12, caches dependencies, installs Google Chrome headless.
-- Executes the complete test suite.
-- Publishes Robot Framework HTML test reports and visual baseline artifacts with a 14-day retention.
-
----
-
-## 🏆 Evaluation Criteria Alignment
-
-- **Code Quality**: Strict separation of concerns adhering to the Page Object Model (POM), standard Robot Framework coding guidelines, docstrings, type annotations, and clean Python code.
-- **Creativity & Innovation**:
-  - Custom AI Visual Validator with perceptual diffing and natural language diagnostics.
-  - Custom DOM Self-Healing engine that rescues tests from locator degradation.
-  - Real-time W3C Navigation Timing API performance profiling.
-- **Scalability & Structure**: Reusable resource components, centralized environment configuration, dynamic test data generation, and enterprise CI/CD integration.
