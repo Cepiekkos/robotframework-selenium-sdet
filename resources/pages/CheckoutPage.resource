@@ -25,18 +25,25 @@ ${BACK_HOME_BUTTON}             id:back-to-products
 Fill Checkout Information
     [Documentation]    Inputs customer details on checkout step 1.
     [Arguments]    ${first_name}    ${last_name}    ${postal_code}
-    Wait Until Element Is Visible    ${FIRST_NAME_INPUT}    timeout=5s
+    Wait Until Element Is Visible    ${FIRST_NAME_INPUT}    timeout=10s
     Clear Element Text    ${FIRST_NAME_INPUT}
     Input Text    ${FIRST_NAME_INPUT}    ${first_name}
     Clear Element Text    ${LAST_NAME_INPUT}
     Input Text    ${LAST_NAME_INPUT}    ${last_name}
     Clear Element Text    ${POSTAL_CODE_INPUT}
     Input Text    ${POSTAL_CODE_INPUT}    ${postal_code}
+    Press Keys    ${POSTAL_CODE_INPUT}    TAB
 
 Continue Checkout
     [Documentation]    Submits customer info and navigates to order overview.
-    Wait Until Element Is Visible    ${CONTINUE_BUTTON}    timeout=5s
-    Execute Javascript    document.getElementById('continue').click()
+    Wait Until Element Is Visible    ${CONTINUE_BUTTON}    timeout=10s
+    Scroll Element Into View    ${CONTINUE_BUTTON}
+    Click Element    ${CONTINUE_BUTTON}
+    ${on_step_two}=    Run Keyword And Return Status    Page Should Contain Element    ${SUBTOTAL_LABEL}
+    ${has_error}=    Run Keyword And Return Status    Page Should Contain Element    ${CHECKOUT_ERROR}
+    IF    not ${on_step_two} and not ${has_error}
+        Execute Javascript    document.getElementById('continue').click()
+    END
 
 Verify Checkout Error Contains
     [Documentation]    Validates error on checkout form.

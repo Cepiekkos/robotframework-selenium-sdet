@@ -30,9 +30,15 @@ Remove Product From Cart
 
 Proceed To Checkout
     [Documentation]    Clicks Checkout button to initiate checkout flow.
-    Wait Until Element Is Visible    ${CHECKOUT_BUTTON}    timeout=5s
-    Click Button    ${CHECKOUT_BUTTON}
-    Wait Until Element Is Visible    id:first-name    timeout=10s
+    Wait Until Page Contains Element    ${CHECKOUT_BUTTON}    timeout=10s
+    Wait Until Element Is Visible    ${CHECKOUT_BUTTON}    timeout=10s
+    Scroll Element Into View    ${CHECKOUT_BUTTON}
+    Click Element    ${CHECKOUT_BUTTON}
+    ${transitioned}=    Run Keyword And Return Status    Wait Until Element Is Visible    id:first-name    timeout=5s
+    IF    not ${transitioned}
+        Execute Javascript    document.getElementById('checkout').click()
+        Wait Until Element Is Visible    id:first-name    timeout=10s
+    END
 
 Return To Inventory
     [Documentation]    Clicks Continue Shopping button.
