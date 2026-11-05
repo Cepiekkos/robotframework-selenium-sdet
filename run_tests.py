@@ -72,10 +72,34 @@ def main():
     result = subprocess.run(cmd)
     duration = round(time.time() - start_time, 2)
 
+    # Maintain canonical report.html and log.html alongside timestamped historical files
+    import shutil
+    import glob
+
+    canonical_report = os.path.join(output_dir, "report.html")
+    canonical_log = os.path.join(output_dir, "log.html")
+
+    report_files = [f for f in glob.glob(os.path.join(output_dir, "report-*.html"))]
+    log_files = [f for f in glob.glob(os.path.join(output_dir, "log-*.html"))]
+
+    if report_files:
+        latest_report = max(report_files, key=os.path.getmtime)
+        try:
+            shutil.copy2(latest_report, canonical_report)
+        except Exception:
+            pass
+
+    if log_files:
+        latest_log = max(log_files, key=os.path.getmtime)
+        try:
+            shutil.copy2(latest_log, canonical_log)
+        except Exception:
+            pass
+
     print("=" * 70)
     print(f"⏱️  Execution completed in {duration} seconds.")
-    print(f"📄 Report HTML: {os.path.join(output_dir, 'report.html')}")
-    print(f"📑 Log HTML:    {os.path.join(output_dir, 'log.html')}")
+    print(f"📄 Report HTML: {canonical_report}")
+    print(f"📑 Log HTML:    {canonical_log}")
     print("=" * 70)
 
     sys.exit(result.returncode)

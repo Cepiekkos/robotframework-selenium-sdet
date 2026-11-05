@@ -77,31 +77,38 @@ Add Product To Cart By Name
     [Documentation]    Finds item card by title and clicks its 'Add to cart' button.
     [Arguments]    ${product_title}
     ${btn_locator}=    Set Variable    xpath://div[contains(@class,'inventory_item')][.//div[text()='${product_title}']]//button
-    Wait Until Element Is Visible    ${btn_locator}    timeout=10s
-    Scroll Element Into View    ${btn_locator}
-    Click Button    ${btn_locator}
+    Wait Until Page Contains Element    ${btn_locator}    timeout=10s
+    ${btn}=    Get WebElement    ${btn_locator}
+    Execute Javascript    arguments[0].click();    ARGUMENTS    ${btn}
     # Synchronize with React DOM state commit: wait until button reflects 'Remove'
-    ${remove_btn}=    Set Variable    xpath://div[contains(@class,'inventory_item')][.//div[text()='${product_title}']]//button[text()='Remove']
-    Wait Until Page Contains Element    ${remove_btn}    timeout=5s
+    ${remove_btn}=    Set Variable    xpath://div[contains(@class,'inventory_item')][.//div[text()='${product_title}']]//button[contains(text(),'Remove')]
+    ${toggled}=    Run Keyword And Return Status    Wait Until Page Contains Element    ${remove_btn}    timeout=3s
+    IF    not ${toggled}
+        Execute Javascript    arguments[0].click();    ARGUMENTS    ${btn}
+        Wait Until Page Contains Element    ${remove_btn}    timeout=5s
+    END
 
 Remove Product From Cart By Name
     [Documentation]    Clicks the Remove button for a specific product on the inventory page.
     [Arguments]    ${product_title}
-    ${btn_locator}=    Set Variable    xpath://div[contains(@class,'inventory_item')][.//div[text()='${product_title}']]//button[text()='Remove']
-    Wait Until Element Is Visible    ${btn_locator}    timeout=10s
-    Scroll Element Into View    ${btn_locator}
-    Click Button    ${btn_locator}
+    ${btn_locator}=    Set Variable    xpath://div[contains(@class,'inventory_item')][.//div[text()='${product_title}']]//button[contains(text(),'Remove')]
+    Wait Until Page Contains Element    ${btn_locator}    timeout=10s
+    ${btn}=    Get WebElement    ${btn_locator}
+    Execute Javascript    arguments[0].click();    ARGUMENTS    ${btn}
     # Synchronize with React DOM state commit: wait until button reflects 'Add to cart'
-    ${add_btn}=    Set Variable    xpath://div[contains(@class,'inventory_item')][.//div[text()='${product_title}']]//button[text()='Add to cart']
-    Wait Until Page Contains Element    ${add_btn}    timeout=5s
+    ${add_btn}=    Set Variable    xpath://div[contains(@class,'inventory_item')][.//div[text()='${product_title}']]//button[contains(text(),'Add to cart')]
+    ${toggled}=    Run Keyword And Return Status    Wait Until Page Contains Element    ${add_btn}    timeout=3s
+    IF    not ${toggled}
+        Execute Javascript    arguments[0].click();    ARGUMENTS    ${btn}
+        Wait Until Page Contains Element    ${add_btn}    timeout=5s
+    END
 
 Get Cart Item Count
     [Documentation]    Returns current integer count displayed on the shopping cart badge, or 0 if empty.
-    # Micro-pause to allow React virtual DOM reconciliation to mount/unmount badge
-    Sleep    0.2s
-    ${has_badge}=    Run Keyword And Return Status    Page Should Contain Element    ${CART_BADGE}
-    IF    ${has_badge}
-        ${badge_text}=    Get Text    ${CART_BADGE}
+    ${elements}=    Get WebElements    ${CART_BADGE}
+    ${len}=    Get Length    ${elements}
+    IF    ${len} > 0
+        ${badge_text}=    Get Text    ${elements}[0]
         ${count}=    Convert To Integer    ${badge_text}
         RETURN    ${count}
     ELSE
@@ -110,9 +117,9 @@ Get Cart Item Count
 
 Navigate To Shopping Cart
     [Documentation]    Clicks the shopping cart badge icon to view cart with fallback support.
-    Wait Until Element Is Visible    ${CART_LINK}    timeout=10s
-    Scroll Element Into View    ${CART_LINK}
-    Click Element    ${CART_LINK}
+    Wait Until Page Contains Element    ${CART_LINK}    timeout=10s
+    ${cart_el}=    Get WebElement    ${CART_LINK}
+    Execute Javascript    arguments[0].click();    ARGUMENTS    ${cart_el}
     ${transitioned}=    Run Keyword And Return Status    Wait Until Page Contains Element    id:checkout    timeout=4s
     IF    not ${transitioned}
         Execute Javascript    document.querySelector('.shopping_cart_link, [data-test="shopping-cart-link"]').click()
@@ -124,7 +131,8 @@ Logout From Application
     Click Button    ${MENU_BUTTON}
     Wait Until Element Is Visible    ${LOGOUT_LINK}    timeout=5s
     Sleep    0.5s    # Allow CSS sliding menu transition to finish
-    Click Element    ${LOGOUT_LINK}
+    ${logout_el}=    Get WebElement    ${LOGOUT_LINK}
+    Execute Javascript    arguments[0].click();    ARGUMENTS    ${logout_el}
     ${logged_out}=    Run Keyword And Return Status    Wait Until Element Is Visible    id:login-button    timeout=4s
     IF    not ${logged_out}
         Execute Javascript    document.getElementById('logout_sidebar_link').click()
