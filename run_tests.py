@@ -28,7 +28,6 @@ def main():
     parser.add_argument("-b", "--browser", default="headlesschrome", help="Browser to execute against (default: headlesschrome)")
     parser.add_argument("-o", "--outputdir", default="reports", help="Directory for test logs and reports")
     parser.add_argument("--variable", "-v", action="append", default=[], help="Pass custom Robot Framework variables (KEY:VALUE)")
-    parser.add_argument("--open", action="store_true", help="Automatically open report.html in default browser upon completion")
 
     args = parser.parse_args()
 
@@ -102,11 +101,6 @@ def main():
     print(f"📄 Report HTML: {canonical_report}")
     print(f"📑 Log HTML:    {canonical_log}")
     print("=" * 70)
-
-    if args.open and os.path.exists(canonical_report):
-        import webbrowser
-        print(f"🌐 Launching report in browser...")
-        webbrowser.open(f"file:///{os.path.abspath(canonical_report).replace(os.sep, '/')}")
 
     sys.exit(result.returncode)
 

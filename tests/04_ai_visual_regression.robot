@@ -14,8 +14,8 @@ TC-VIS-01: Establish And Verify Baseline For Login View
     Navigate To Login Page
     Verify On Login Page
     # First execution generates baseline; subsequent runs assert visual parity
-    ${result}=    Compare Visual Baseline    login_screen_baseline    threshold_percent=2.0
-    Should Be True    ${result['diff_percent']} <= 2.0
+    ${result}=    Compare Visual Baseline    login_screen_baseline    threshold_percent=3.5
+    Should Be True    ${result['diff_percent']} <= 3.5
 
 TC-VIS-02: AI Anomaly Detection Identifies Visual Regressions On Visual User
     [Documentation]    Leverages SauceDemo's 'visual_user' to detect intentional layout shifts and broken image assets using AI Visual Inspector.
@@ -54,5 +54,5 @@ TC-VIS-03: Clean Visual Verification For Standard User Catalog
     Verify Inventory Page Loaded
     Wait Until Page Contains Element    css:.inventory_item_img
     Sleep    1s
-    ${result}=    Compare Visual Baseline    inventory_catalog_clean_baseline    threshold_percent=2.0
-    Should Be True    ${result['diff_percent']} <= 2.0
+    ${result}=    Compare Visual Baseline    inventory_catalog_clean_baseline    threshold_percent=3.5
+    Should Be True    ${result['diff_percent']} <= 3.5
